@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:48:18 by jihong            #+#    #+#             */
-/*   Updated: 2022/06/30 20:08:19 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/01 18:22:46 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,28 @@ void	error_massage(char *err)
 
 void game_init(t_game_attribute *attribute)
 {
-	attribute -> mlx = mlx_init();
-	attribute -> img = image_init(attribute -> mlx);
+	int	wid;
+	int	hei;
+
+	attribute->mlx = mlx_init();
+	attribute->img = image_init(attribute->mlx);
+	read_map("./map/map.ber",attribute);
+	/* 맵 예외처리 체크 추가해야함 */
+	map_init(attribute);
+	render_map(attribute);
+}
+
+int exit_game(t_game_attribute *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
+}
+
+int press_key(int key, t_game_attribute *game)
+{
+	if (key == KEY_ESC)
+		exit_game(game);
+	return (0);
 }
 
 int main(int argc, char *argv[])
@@ -28,13 +48,13 @@ int main(int argc, char *argv[])
 	t_game_attribute	*attribute;
 
 	if (argc < 2)
-		return (error_massage("Check input!"),0);
+		return (error_massage("Check input!"), 0);
 	attribute = malloc(sizeof(t_game_attribute));
 	if (attribute == NULL)
 		return (0);
 	game_init(attribute);
-	attribute -> win = mlx_new_window(attribute -> mlx, 500, 500, "mlx_project");
-	mlx_put_image_to_window(attribute->mlx,attribute->win,attribute->img.box,0,0);
+	mlx_hook(attribute->win, X_EVENT_KEY_PRESS, 0, &press_key,attribute);
+	mlx_hook(attribute->win, X_EVENT_KEY_EXIT, 0, &exit_game, attribute);
 	mlx_loop(attribute->mlx);
 
 }
