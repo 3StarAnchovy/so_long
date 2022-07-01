@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:48:18 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 18:22:46 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/01 20:29:50 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ int press_key(int key, t_game_attribute *game)
 {
 	if (key == KEY_ESC)
 		exit_game(game);
+	if (key == KEY_W)
+		move_w(game);
+	if (key == KEY_A)
+		move_a(game);
+	if (key == KEY_D)
+		move_d(game);
+	if (key == KEY_S)
+		move_s(game);
 	return (0);
 }
 
