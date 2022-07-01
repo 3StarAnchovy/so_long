@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:48:52 by jihong            #+#    #+#             */
-/*   Updated: 2022/06/30 23:18:11 by jihong           ###   ########.fr       */
+/*   Created: 2022/06/30 19:37:18 by jihong            #+#    #+#             */
+/*   Updated: 2022/06/30 19:53:00 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //지워야함
-#include <fcntl.h>
-#include "mlx/mlx.h"
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+#include "so_long.h"
 
-typedef struct s_img_attribute
+t_img_attribute image_init(void *mlx)
 {
-	void *box;
-	void *grass;
-	void *player;
-	void *wall;
-}	t_img_attribute;
-typedef struct s_game_attribute
-{
-	void	*mlx;
-	void	*win;
-	int		walk_cnt;
 	t_img_attribute img;
-}	t_game_attribute;
+	int	width;
+	int height;
 
-t_img_attribute image_init(void *mlx);
+	img.box = mlx_xpm_file_to_image(mlx,"./images/box.xpm",&width,&height);
+	img.grass = mlx_xpm_file_to_image(mlx,"./images/grass.xpm",&width,&height);
+	img.player = mlx_xpm_file_to_image(mlx,"./images/player.xpm",&width,&height);
+	img.wall = mlx_xpm_file_to_image(mlx,"./images/wall.xpm",&width,&height);
 
+	return (img);
+}
