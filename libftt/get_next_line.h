@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:57 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 16:09:37 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 16:06:03 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
 
 char	*get_next_line(int fd);
 size_t	ft_strlenn(const char *c);
