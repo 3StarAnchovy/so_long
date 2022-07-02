@@ -11,7 +11,7 @@ $(NAME)		:	$(OBJS)
 		make all -C $(LIBFT)/
 		gcc -o $(NAME) $(OBJS) -Llibft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 %.o			:	%.c
-		gcc -c $^ -I./ -o $@
+		gcc $(FLAGS) -c $^ -I./ -o $@
 
 clean		:
 		rm -f $(OBJS)

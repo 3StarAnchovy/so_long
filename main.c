@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:48:18 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/02 00:16:51 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 15:56:00 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,23 @@ void	error_massage(char *err)
 	exit(0);
 }
 
-void game_init(t_game_attribute *attribute)
+void	game_init(t_game_attribute *attribute, char *map_name)
 {
-	int	wid;
-	int	hei;
-
 	attribute->mlx = mlx_init();
 	attribute->img = image_init(attribute->mlx);
-	read_map("./map/map.ber",attribute);
+	read_map(map_name, attribute);
 	check_all_exception(attribute);
 	map_init(attribute);
 	render_map(attribute);
 }
 
-int exit_game(t_game_attribute *game)
+int	exit_game(t_game_attribute *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
 
-int press_key(int key, t_game_attribute *game)
+int	press_key(int key, t_game_attribute *game)
 {
 	if (key == KEY_ESC)
 		exit_game(game);
@@ -52,7 +49,7 @@ int press_key(int key, t_game_attribute *game)
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_game_attribute	*attribute;
 
@@ -61,9 +58,8 @@ int main(int argc, char *argv[])
 	attribute = malloc(sizeof(t_game_attribute));
 	if (attribute == NULL)
 		return (0);
-	game_init(attribute);
-	mlx_hook(attribute->win, X_EVENT_KEY_PRESS, 0, &press_key,attribute);
+	game_init(attribute, argv[1]);
+	mlx_hook(attribute->win, X_EVENT_KEY_PRESS, 0, &press_key, attribute);
 	mlx_hook(attribute->win, X_EVENT_KEY_EXIT, 0, &exit_game, attribute);
 	mlx_loop(attribute->mlx);
-
 }
