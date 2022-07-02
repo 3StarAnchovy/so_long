@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:48:52 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 20:28:27 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 00:15:35 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,13 @@ t_img_attribute image_init(void *mlx);
 void read_map(char *name, t_game_attribute *game);
 void map_init(t_game_attribute *game);
 void render_map(t_game_attribute *g);
+
 void clear_game(t_game_attribute *game);
 int move_w(t_game_attribute *g);
 int move_a(t_game_attribute *g);
 int move_d(t_game_attribute *g);
 int move_s(t_game_attribute *g);
+
+void	error_massage(char *err);
+
+void check_all_exception(t_game_attribute *game);

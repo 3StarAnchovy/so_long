@@ -1,7 +1,7 @@
 NAME		= so_long
 LIBFT		= libft
 LIBFT_LIB	= libft.a
-SRCS		= main.c image.c map/map.c move.c
+SRCS		= main.c image.c map/map.c move.c map/map_exception.c
 OBJS		= $(SRCS:%.c=%.o)
 LIBC		= ar rc
 FLAGS		= -Wall -Wextra -Werror

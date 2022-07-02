@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:48:18 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 20:29:50 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 00:16:51 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	error_massage(char *err)
 {
 	write(1, err, ft_strlen(err));
+	exit(0);
 }
 
 void game_init(t_game_attribute *attribute)
@@ -25,7 +26,7 @@ void game_init(t_game_attribute *attribute)
 	attribute->mlx = mlx_init();
 	attribute->img = image_init(attribute->mlx);
 	read_map("./map/map.ber",attribute);
-	/* 맵 예외처리 체크 추가해야함 */
+	check_all_exception(attribute);
 	map_init(attribute);
 	render_map(attribute);
 }

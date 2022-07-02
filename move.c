@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:01:48 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 20:46:19 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 00:19:23 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void clear_game(t_game_attribute *game)
 {
 	game -> walk_cnt ++;
 	write(1,"clear!\n",8);
+	exit(0);
 }
 
 int move_w(t_game_attribute *g)

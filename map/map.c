@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:22:30 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/01 17:52:28 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/01 23:23:22 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void read_map(char *name, t_game_attribute *game)
 	line = get_next_line(fd);
 	game->height = 0;
 	game->width = (int)ft_strlen(line) - 1; //줄바꿈 제외
+	game->walk_cnt = 0;
 	game->map_str=ft_strnndup(line,game->width); //줄바꿈 제외 한줄 갖다박아
 	free(line);
 	while(line)
