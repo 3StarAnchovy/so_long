@@ -6,11 +6,17 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:24:27 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/02 15:59:44 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 18:30:18 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	file_exception(int fd)
+{
+	if (fd <= 0)
+		error_massage("check files");
+}
 
 void	check_wall_exception(t_game_attribute *g)
 {

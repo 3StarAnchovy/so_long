@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:22:30 by jihong            #+#    #+#             */
-/*   Updated: 2022/07/02 15:29:17 by jihong           ###   ########.fr       */
+/*   Updated: 2022/07/02 18:30:37 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	read_map(char *name, t_game_attribute *game)
 {
 	int		fd;
 	char	*line;
+	char	*temp;
 
 	fd = open(name, O_RDONLY);
-	if (fd <= 0)
-		error_massage("check files");
+	file_exception(fd);
 	line = get_next_line(fd);
 	game->height = 0;
 	game->width = (int)ft_strlen(line) - 1;
@@ -32,8 +32,10 @@ void	read_map(char *name, t_game_attribute *game)
 		line = get_next_line(fd);
 		if (line)
 		{
-			line = ft_strnndup(line, ft_strlen(line) - 1);
-			game->map_str = ft_strjoin_free(game->map_str, line);
+			temp = ft_strnndup(line, ft_strlen(line) - 1);
+			game->map_str = ft_strjoin_free(game->map_str, temp);
+			free(line);
+			free(temp);
 		}
 	}
 	close(fd);
